@@ -11,7 +11,26 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class audioPlayer 
 {
 	private String filepath;
+	private AudioInputStream audioStream;
+	private Clip clip;
 	
-	public audioPlayer()
+	public audioPlayer(String filepath) 
+	throws UnsupportedAudioFileException,
+	IOException, LineUnavailableException
+	{
+		audioStream = AudioSystem.getAudioInputStream(new File(filepath));
+		clip = AudioSystem.getClip();
+		clip.open(audioStream);
+	}
+	
+	public Clip getClip()
+	{
+		return clip;
+	}
+	public void play()
+	{
+		clip.start();
+		System.out.println("playing");
+	}
 	
 }
