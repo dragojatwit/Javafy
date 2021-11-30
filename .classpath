@@ -7,6 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/Users/bragdonn/Downloads/openjfx-11.0.1_windows-x64_bin-sdk.zip"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx11"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx11"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

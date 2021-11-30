@@ -1,5 +1,8 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
 
 import javafx.application.Application;
@@ -15,6 +18,9 @@ import javafx.stage.Stage;
 public class javafyClient extends Application implements Runnable
 {
 	static File currentSong = new File("");
+	static Queue<Song> trackQueue = new LinkedList<Song>();
+	static Queue<Song> prevQueue = new LinkedList<Song>();
+	
 //	public static void play(){
 //		//Resumes the current song
 //	}
@@ -28,11 +34,19 @@ public class javafyClient extends Application implements Runnable
 //	}
 //	 
 //	 
-//	 public static void queue(Song song, List playlist){
-//		 //Puts the specified media in queue behind whatever else is first in the queue
-//	}
+	 public static void queue(Song song, List playlist){//Puts the specified media in queue behind and adds a playlist to a queue
+		 //Queue<Song> trackQueue = new LinkedList<Song>();
+		 //playlist = bag(playlist);
+		 
+		 //may want to remove the list playlist parameter and leave playlist as a variable
+		 for(int i = 0; i <= playlist.size(); i++){
+			 trackQueue.offer((Song) playlist.get(i));
+		 }
+		 
+		 trackQueue.offer(song);
+	}
 //	
-//	 public static void bag(Song song, List playlist){
+//	 public static List bag(List playlist){
 //	 	//Puts the specified media in bag for randomization
 //	}
 //	 
@@ -49,20 +63,40 @@ public class javafyClient extends Application implements Runnable
 //		 //[Produces error if time specified is longer than song]
 //	}
 //	 
-//	 public static void next() {
-//		 //Skips to the next song in queue
-//	}
+	 public static void next() {//Skips to the next song in queue
+		 Song s = trackQueue.poll();
+		 
+		 prevQueue.add(s);
+		 
+		 if(s == null){
+			 System.out.println("No additional tracks in queue");
+			 System.exit(1);
+		 }
+	}
 //	 
-//	 public static void back() {
-//		 //Plays the last song played
-//	}
+	 public static void back() {//Plays the last song played
+		 Queue<Song> tempQueue = new LinkedList<Song>();
+		 Song p = prevQueue.poll();
+		  
+		 if(p == null){
+			 System.out.println("No previous tracks in queue");
+			 System.exit(1);
+		 }
+		 
+		 tempQueue.add(p);
+		 
+		 for(int i = 0; i <= trackQueue.size(); i++){
+			 trackQueue.offer(trackQueue.poll());
+		 }
+	}
 //	 
 //	 public static void restart() {
 //		 //Starts the current song from the beginning
 //	}
 //	 
-//	 public static void returnSong() {//most likely type will change to song instead of void.
+//	 public static void return() {//most likely type will change to song instead of void.
 //		 //Shows the previous display [returns error if display is at start]
+//		 
 //	}
 //	 
 //	 public static void select(List playlist){
@@ -74,8 +108,7 @@ public class javafyClient extends Application implements Runnable
 //	}
 	
 	private static String currentLevel;
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		javafyClient obj = new javafyClient();
 	    Thread thread = new Thread(obj);
 	    currentSong = new File("Music/mmad.wav");
