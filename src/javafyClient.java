@@ -31,6 +31,10 @@ public class javafyClient extends Application implements Runnable
 //	 public static void queue(Song song, List playlist){
 //		 //Puts the specified media in queue behind whatever else is first in the queue
 //	}
+//	
+//	 public static void bag(Song song, List playlist){
+//	 	//Puts the specified media in bag for randomization
+//	}
 //	 
 //	 public static void priorityQueue (Song song, List playlist){
 //	 	//Puts the specified media before anything else in the queue
@@ -68,6 +72,7 @@ public class javafyClient extends Application implements Runnable
 //	 public static void show(){
 //		 //Shows the queue
 //	}
+	
 	private static String currentLevel;
 	public static void main(String[] args) 
 	{
