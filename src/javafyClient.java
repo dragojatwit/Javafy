@@ -54,9 +54,13 @@ public class javafyClient extends Application implements Runnable
 //	 	//Puts the specified media before anything else in the queue
 //	}
 //
-//	 public static void clear (){
-//		 //Clears the entire queue with the exception of the song currently playing
-//	}
+	 public static void clear (){//Clears the entire queue with the exception of the song currently playing
+		 Song s = trackQueue.poll();
+		 
+		 trackQueue.clear();
+		 
+		 trackQueue.add(s);
+	 }
 //	 
 //	 public static void skip(String timestamp) {
 //		 //Skips to the specified timestamp of current song
@@ -84,10 +88,10 @@ public class javafyClient extends Application implements Runnable
 		 }
 		 
 		 tempQueue.add(p);
+		 tempQueue.addAll(trackQueue);
 		 
-		 for(int i = 0; i <= trackQueue.size(); i++){
-			 trackQueue.offer(trackQueue.poll());
-		 }
+		 trackQueue.clear();
+		 trackQueue.addAll(tempQueue);
 	}
 //	 
 //	 public static void restart() {
@@ -103,9 +107,16 @@ public class javafyClient extends Application implements Runnable
 //	 //Shows the contents of the specified playlist or album
 //	}
 //	 
-//	 public static void show(){
-//		 //Shows the queue
-//	}
+	public static void show(){//Shows the queue
+		int tQ = trackQueue.size();
+		Queue<Song> tempQueue = new LinkedList<Song>();
+		
+		for(int i = 0; i <= tQ; i++){
+			Song s = trackQueue.poll();
+			tempQueue.add(s);
+			System.out.printf("%d", s);
+		}
+	}
 	
 	private static String currentLevel;
 	public static void main(String[] args) {
