@@ -15,9 +15,9 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 
-public class javafyClient extends Application implements Runnable
+public class javafyClient //implements Runnable
 {
-	static File currentSong = new File("");
+	static String currentSong = new String("");
 	static Queue<Song> trackQueue = new LinkedList<Song>();
 	static Queue<Song> prevQueue = new LinkedList<Song>();
 	
@@ -120,13 +120,9 @@ public class javafyClient extends Application implements Runnable
 	
 	private static String currentLevel;
 	public static void main(String[] args) {
-		javafyClient obj = new javafyClient();
-	    Thread thread = new Thread(obj);
-	    currentSong = new File("Music/mmad.wav");
-	    thread.start();
+	    currentSong = "Music/mmad.wav";
+	    //audioPlayer player = new audioPlayer(currentSong);
 	    
-	    
-		
 			Scanner sc = new Scanner(System.in);
 			//keeps track of current level for return command
 			//topLevel, playlistLevel, albumLevel, songLevel
@@ -167,7 +163,9 @@ public class javafyClient extends Application implements Runnable
 				currentLevel = "songLevel";
 				songLevel();
 				break;
-			}}}
+			}
+		}
+	}
 		
 	public static void playlistLevel(){
 		Scanner sc = new Scanner(System.in);
@@ -323,53 +321,4 @@ public class javafyClient extends Application implements Runnable
 	//commandTaker(playlistCommand);
 	//playlistCommand = sc.nextLine();
 
-	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
-		
-		try
-		{
-	        MediaPlayer player = audioPlayer.playSound(currentSong);
-	        // Add a mediaView, to display the media. Its necessary !
-	        // This mediaView is added to a Pane
-	        MediaView mediaView = new MediaView(player);
-	
-	        // Add to scene
-	        Group root = new Group(mediaView);
-	        Scene scene = new Scene(root, 5, 5);
-	
-	        // Show the stage
-	        primaryStage.setTitle("Media Player");
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
-	
-	        // Play the media once the stage is shown
-	        player.play();
-	        Status status = player.getStatus();
-	        while(status == status.PLAYING)
-	        {
-	        	if(player.getCurrentTime().greaterThanOrEqualTo(player.getTotalDuration()))
-		        {
-		        	player.stop();
-		        	primaryStage.close();
-		        }
-	        }
-	        
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void run() 
-	{
-		while(true)
-		{
-			launch();
-		}
-		
-	}
 }
