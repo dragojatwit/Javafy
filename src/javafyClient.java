@@ -12,6 +12,7 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 
+
 public class javafyClient extends Application implements Runnable
 {
 	static File currentSong = new File("");
@@ -217,6 +218,16 @@ public class javafyClient extends Application implements Runnable
 			albumCommand = sc.nextLine();
 		break;
 		}
+	}
+
+	private static void album1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void album2() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void songLevel() {
