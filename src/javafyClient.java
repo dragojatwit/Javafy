@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 public class javafyClient //implements Runnable
 {
 	static String currentSong = new String("");
-	static Queue<Song> trackQueue = new LinkedList<Song>();
-	static Queue<Song> prevQueue = new LinkedList<Song>();
+	//static Queue<Song> trackQueue = new LinkedList<Song>();
+	//static Queue<Song> prevQueue = new LinkedList<Song>();
 	
 //	public static void play(){
 //		//Resumes the current song
@@ -34,17 +34,17 @@ public class javafyClient //implements Runnable
 //	}
 //	 
 //	 
-	 public static void queue(Song song, List playlist){//Puts the specified media in queue behind and adds a playlist to a queue
-		 //Queue<Song> trackQueue = new LinkedList<Song>();
-		 //playlist = bag(playlist);
-		 
-		 //may want to remove the list playlist parameter and leave playlist as a variable
-		 for(int i = 0; i <= playlist.size(); i++){
-			 trackQueue.offer((Song) playlist.get(i));
-		 }
-		 
-		 trackQueue.offer(song);
-	}
+//	 public static void queue(Song song, List playlist){//Puts the specified media in queue behind and adds a playlist to a queue
+//		 //Queue<Song> trackQueue = new LinkedList<Song>();
+//		 //playlist = bag(playlist);
+//		 
+//		 //may want to remove the list playlist parameter and leave playlist as a variable
+//		 for(int i = 0; i <= playlist.size(); i++){
+//			 trackQueue.offer((Song) playlist.get(i));
+//		 }
+//		 
+//		 trackQueue.offer(song);
+//	}
 //	
 //	 public static List bag(List playlist){
 //	 	//Puts the specified media in bag for randomization
