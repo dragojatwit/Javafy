@@ -15,7 +15,9 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 
+
 public class javafyClient //implements Runnable
+
 {
 	static String currentSong = new String("");
 	//static Queue<Song> trackQueue = new LinkedList<Song>();
@@ -264,6 +266,16 @@ public class javafyClient //implements Runnable
 			albumCommand = sc.nextLine();
 		break;
 		}
+	}
+
+	private static void album1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void album2() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void songLevel() {
